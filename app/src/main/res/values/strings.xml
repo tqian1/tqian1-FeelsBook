@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">tqian1-FeelsBook</string>
-    <string name="add_comment_hint">Optional comment here</string>
+    <string name="add_comment_hint">Optional text</string>
     <string name="comment_description">Step 1: Enter a comment</string>
     <string name="emotion_description">Step 2: Select emotion to add</string>
     <string name="feeling_description">Step 3: View Feelings History</string>
+    <string name="edit_comment_description">Edit Comment</string>
+    <string name="edit_date_description">Edit Date</string>
+    <string name="add_button">Add</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="save_button">Save Changes</string>
 </resources>

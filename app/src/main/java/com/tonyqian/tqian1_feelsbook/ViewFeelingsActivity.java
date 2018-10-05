@@ -1,10 +1,11 @@
 package com.tonyqian.tqian1_feelsbook;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 
 import java.util.Collections;
 
@@ -39,12 +40,25 @@ public class ViewFeelingsActivity extends AppCompatActivity {
     // Callback when Edit button in FeelingRecyclerView is clicked
     // launch activity to edit the selected Feeling
     public void editFeeling(int position) {
-
+        Intent intent = new Intent(this, EditFeelingActivity.class);
+        startActivityForResult(intent, 1);
     }
 
     // Callback when Delete button in FeelingRecyclerView is clicked
     // remove the deleted Feeling
     public void deleteFeeling(int position) {
         Common.myFeelings.remove(position);
+    }
+
+    // General callback method when return from other Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // When returning from ViewFeelingsActivity
+        if (requestCode==1) {
+            // Update our FeelingAdapter in case Feeling was changed
+            viewFeelingAdapter.notifyDataSetChanged();
+        }
     }
 }

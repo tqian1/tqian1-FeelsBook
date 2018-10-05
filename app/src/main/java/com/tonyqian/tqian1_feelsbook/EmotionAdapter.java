@@ -79,9 +79,9 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
 
         public EmotionViewHolder(View v) {
             super(v);
-            EmotionName = v.findViewById(R.id.emotion_name);
-            EmotionCount = v.findViewById(R.id.emotion_count);
-            AddFeelingButton = v.findViewById(R.id.add_feeling_button);
+            EmotionName = v.findViewById(R.id.emotionName);
+            EmotionCount = v.findViewById(R.id.emotionCount);
+            AddFeelingButton = v.findViewById(R.id.addFeelingButton);
         }
     }
 }

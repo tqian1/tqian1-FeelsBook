@@ -82,11 +82,11 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
 
         public FeelingViewHolder(View v) {
             super(v);
-            FeelingEmotion = v.findViewById(R.id.feeling_emotion);
-            FeelingDate = v.findViewById(R.id.feeling_date);
-            FeelingComment = v.findViewById(R.id.feeling_comment);
-            EditFeelingButton = v.findViewById(R.id.edit_feeling_button);
-            DeleteFeelingButton = v.findViewById(R.id.delete_feeling_button);
+            FeelingEmotion = v.findViewById(R.id.feelingEmotion);
+            FeelingDate = v.findViewById(R.id.feelingDate);
+            FeelingComment = v.findViewById(R.id.feelingComment);
+            EditFeelingButton = v.findViewById(R.id.editFeelingButton);
+            DeleteFeelingButton = v.findViewById(R.id.deleteFeelingButton);
         }
     }
 }

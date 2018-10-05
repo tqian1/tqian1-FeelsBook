@@ -9,17 +9,17 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/emotion_count"
+        android:id="@+id/emotionCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/emotion_name"
+        app:layout_constraintStart_toEndOf="@+id/emotionName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/emotion_name"
+        android:id="@+id/emotionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_feeling_button"
+        android:id="@+id/addFeelingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Add"
+        android:text="@string/add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
