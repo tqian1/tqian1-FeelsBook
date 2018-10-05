@@ -67,12 +67,6 @@ public class FeelsBookActivity extends AppCompatActivity {
         saveFeelingsToFile();
     }
 
-    // Callback when View Log button is pressed
-    public void viewFeelings(View view) {
-        Intent intent = new Intent(this, ViewFeelingsActivity.class);
-        startActivity(intent);
-    }
-
     // Callback when Add button in EmotionRecyclerView is clicked
     public void addFeeling(String emotion) {
         EditText emotionComment = findViewById(R.id.emotionComment);
@@ -91,6 +85,26 @@ public class FeelsBookActivity extends AppCompatActivity {
         Button viewFeelingsButton = findViewById(R.id.viewFeelingsButton);
         String buttonText = "View Log (" + Common.myFeelings.size() + " feelings)";
         viewFeelingsButton.setText(buttonText);
+    }
+
+    // Callback when View Log button is pressed
+    public void viewFeelings(View view) {
+        Intent intent = new Intent(this, ViewFeelingsActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    // General callback method when return from other Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // When returning from ViewFeelingsActivity
+        if (requestCode==1) {
+            // Update our EmotionAdapter in case Feelings were deleted
+            selectEmotionAdapter.notifyDataSetChanged();
+            // Update our View Log Button in case Feelings were deleted
+            updateViewFeelingsButton();
+        }
     }
 
     // Save our feelings
