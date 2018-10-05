@@ -35,13 +35,6 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
         holder.FeelingDate.setText(dateText);
         String commentText = "Comment: " + feeling.getComment();
         holder.FeelingComment.setText(commentText);
-
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                viewFeelingsActivity.editFeeling(Common.myFeelings.get(position));
-            }
-        });
     }
 
     @Override
@@ -49,27 +42,16 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
         return Common.myFeelings.size();
     }
 
-    public static class FeelingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class FeelingViewHolder extends RecyclerView.ViewHolder {
         TextView FeelingEmotion;
         TextView FeelingDate;
         TextView FeelingComment;
-        ItemClickListener itemClickListener;
 
         public FeelingViewHolder(View v) {
             super(v);
             FeelingEmotion = v.findViewById(R.id.feeling_emotion);
             FeelingDate = v.findViewById(R.id.feeling_date);
             FeelingComment = v.findViewById(R.id.feeling_comment);
-            itemView.setOnClickListener(this);
-        }
-
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            itemClickListener.onClick(view, getAdapterPosition());
         }
     }
 }

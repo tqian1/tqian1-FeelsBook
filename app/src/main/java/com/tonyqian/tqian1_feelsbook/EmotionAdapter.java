@@ -26,13 +26,6 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
     @Override
     public void onBindViewHolder(EmotionViewHolder holder, int position) {
         holder.EmotionName.setText(emotionList[position]);
-
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                feelsBookActivity.addFeeling(emotionList[position]);
-            }
-        });
     }
 
     @Override
@@ -40,23 +33,12 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
         return emotionList.length;
     }
 
-    public static class EmotionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class EmotionViewHolder extends RecyclerView.ViewHolder {
         TextView EmotionName;
-        ItemClickListener itemClickListener;
 
         public EmotionViewHolder(View v) {
             super(v);
             EmotionName = v.findViewById(R.id.emotion_name);
-            itemView.setOnClickListener(this);
-        }
-
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            itemClickListener.onClick(view, getAdapterPosition());
         }
     }
 }
