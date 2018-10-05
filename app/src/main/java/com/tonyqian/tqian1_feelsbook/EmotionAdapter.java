@@ -1,5 +1,6 @@
 package com.tonyqian.tqian1_feelsbook;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +9,11 @@ import android.widget.TextView;
 
 public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionViewHolder> {
     private String[] emotionList;
+    private FeelsBookActivity feelsBookActivity;
 
-    public static class EmotionViewHolder extends RecyclerView.ViewHolder {
-        TextView EmotionName;
-        public EmotionViewHolder(View v) {
-            super(v);
-            EmotionName = v.findViewById(R.id.emotion_name);
-        }
-    }
-
-    public EmotionAdapter(String[] basicEmotions) {
-       this.emotionList = basicEmotions;
+    public EmotionAdapter(FeelsBookActivity feelsBookActivity, String[] basicEmotions) {
+        this.emotionList = basicEmotions;
+        this.feelsBookActivity = feelsBookActivity;
     }
 
     @Override
@@ -32,10 +27,37 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
     @Override
     public void onBindViewHolder(EmotionViewHolder holder, int position) {
         holder.EmotionName.setText(emotionList[position]);
+
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                feelsBookActivity.saveSelectedEmotion(emotionList[position]);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return emotionList.length;
+    }
+
+    public static class EmotionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView EmotionName;
+        ItemClickListener itemClickListener;
+
+        public EmotionViewHolder(View v) {
+            super(v);
+            EmotionName = v.findViewById(R.id.emotion_name);
+            itemView.setOnClickListener(this);
+        }
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemClickListener.onClick(view, getAdapterPosition());
+        }
     }
 }

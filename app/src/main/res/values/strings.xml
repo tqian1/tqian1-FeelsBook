@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">tqian1-FeelsBook</string>
+    <string name="add_comment">Enter a comment (Optional)</string>
+    <string name="choose_emotion">Tap emotion to add</string>
+    <string name="view_feelings">View Feelings</string>
 </resources>
