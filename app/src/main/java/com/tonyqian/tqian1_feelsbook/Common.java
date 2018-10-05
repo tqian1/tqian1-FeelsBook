@@ -1,6 +1,7 @@
 package com.tonyqian.tqian1_feelsbook;
 
+import java.util.ArrayList;
+
 public class Common {
-    public static String selectedEmotion=null;
-    public static String emotionComment=null;
+    public static ArrayList<Feeling> myFeelings = null;
 }

@@ -1,6 +1,5 @@
 package com.tonyqian.tqian1_feelsbook;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +30,7 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                feelsBookActivity.saveSelectedEmotion(emotionList[position]);
+                feelsBookActivity.addFeeling(emotionList[position]);
             }
         });
     }
