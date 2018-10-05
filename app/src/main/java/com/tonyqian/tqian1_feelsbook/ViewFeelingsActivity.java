@@ -41,6 +41,7 @@ public class ViewFeelingsActivity extends AppCompatActivity {
     // launch activity to edit the selected Feeling
     public void editFeeling(int position) {
         Intent intent = new Intent(this, EditFeelingActivity.class);
+        intent.putExtra("position", position);
         startActivityForResult(intent, 1);
     }
 
@@ -57,6 +58,8 @@ public class ViewFeelingsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         // When returning from ViewFeelingsActivity
         if (requestCode==1) {
+            // Resort our myFeelings ArrayList in case Date was changed
+            Collections.sort(Common.myFeelings);
             // Update our FeelingAdapter in case Feeling was changed
             viewFeelingAdapter.notifyDataSetChanged();
         }
