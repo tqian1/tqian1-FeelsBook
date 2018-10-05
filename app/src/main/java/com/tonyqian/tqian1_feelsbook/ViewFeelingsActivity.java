@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+/**
+ ViewFeelingsActivity controls a RecyclerView used for displaying the log of feelings
+*/
 public class ViewFeelingsActivity extends AppCompatActivity {
     private RecyclerView viewFeelingRecyclerView;
     private RecyclerView.LayoutManager viewFeelingLayoutManager;
@@ -23,10 +26,5 @@ public class ViewFeelingsActivity extends AppCompatActivity {
         // create custom adapter and use it
         viewFeelingAdapter = new FeelingAdapter(this );
         viewFeelingRecyclerView.setAdapter(viewFeelingAdapter);
-    }
-
-    // Callback when unit in FeelingRecyclerView is clicked
-    public void editFeeling(Feeling feeling) {
-
     }
 }

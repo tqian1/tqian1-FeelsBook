@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ EmotionAdapter is a RecyclerView.Adapter that is used for rendering a list of Emotion choices, each
+ with a counter and button for the user to use to add and keep track of feelings. The adapter is in
+ charge of listening for clicks on the add button so it can delegate the creation of a Feeling to
+ FeelsBookActivity, and so it can refresh/recalculate the count for that emotion.
+ */
 public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionViewHolder> {
     private String[] emotionList;
     private FeelsBookActivity feelsBookActivity;

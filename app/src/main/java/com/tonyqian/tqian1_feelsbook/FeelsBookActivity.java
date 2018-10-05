@@ -23,6 +23,13 @@ import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ ViewFeelingsActivity controls our main view which consists of some TextViews to describe elements,
+ a RecyclerView for selecting emotions to add and viewing how many times they have been added,
+ a PlainText comment input and a Button used for launching ViewFeelingsActivity where the user can
+ view his log of feelings. This activity is also responsible for creating new Feeling entries as
+ well as saving all feeling entries when the app is stopped and loading them when it is launched.
+ */
 public class FeelsBookActivity extends AppCompatActivity {
     private RecyclerView selectEmotionRecyclerView;
     private RecyclerView.LayoutManager selectEmotionLayoutManager;

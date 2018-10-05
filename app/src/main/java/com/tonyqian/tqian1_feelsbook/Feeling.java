@@ -2,6 +2,11 @@ package com.tonyqian.tqian1_feelsbook;
 
 import java.util.Date;
 
+/**
+ Feeling is a class that represents a single emotion entry that the user has created. It contains
+ an EMOTION, which is a string describing Love, Hate etc, a COMMENT (optional) and a DATE for when
+ it was added.
+ */
 public class Feeling {
     private String emotion;
     private String comment;

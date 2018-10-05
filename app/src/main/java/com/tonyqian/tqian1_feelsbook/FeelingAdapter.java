@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
+/**
+ FeelingAdapter is a RecyclerView.Adapter that is used for rendering a list which represents a log
+ of the feelings that the user has added. Each item on the list contains details about the entry,
+ as well as buttons for editing and deleting the entry.
+ */
 public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingViewHolder> {
     private ViewFeelingsActivity viewFeelingsActivity;
 
