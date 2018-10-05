@@ -8,23 +8,27 @@
     tools:context=".FeelsBookActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/viewFeelingsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:onClick="viewFeelings"
-        android:text="@string/view_feelings"
+        android:text="View Feelings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotionRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/feelingDescription" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/commentDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_comment"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/comment_description"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/emotionComment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,18 +40,24 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/add_comment_hint"
+        android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintBottom_toTopOf="@+id/emotionDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/commentDescription"
+        tools:targetApi="o" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/emotionDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choose_emotion"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/emotion_description"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/emotionRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emotionComment" />
@@ -57,11 +67,23 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/feelingDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/emotionDescription" />
+
+    <TextView
+        android:id="@+id/feelingDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/feeling_description"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewFeelingsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emotionRecyclerView" />
 
 </android.support.constraint.ConstraintLayout>

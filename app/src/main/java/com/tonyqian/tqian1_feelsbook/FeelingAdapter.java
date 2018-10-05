@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingViewHolder> {
     private ViewFeelingsActivity viewFeelingsActivity;
 
@@ -23,7 +25,16 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
 
     @Override
     public void onBindViewHolder(FeelingViewHolder holder, int position) {
-        holder.FeelingName.setText(Common.myFeelings.get(position).getEmotion());
+        Feeling feeling = Common.myFeelings.get(position);
+
+        // use SDF to get iso8601 compliant DateTime format
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+
+        holder.FeelingEmotion.setText(feeling.getEmotion());
+        String dateText = sdf.format(feeling.getDate());
+        holder.FeelingDate.setText(dateText);
+        String commentText = "Comment: " + feeling.getComment();
+        holder.FeelingComment.setText(commentText);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -39,12 +50,16 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
     }
 
     public static class FeelingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView FeelingName;
+        TextView FeelingEmotion;
+        TextView FeelingDate;
+        TextView FeelingComment;
         ItemClickListener itemClickListener;
 
         public FeelingViewHolder(View v) {
             super(v);
-            FeelingName = v.findViewById(R.id.feeling_name);
+            FeelingEmotion = v.findViewById(R.id.feeling_emotion);
+            FeelingDate = v.findViewById(R.id.feeling_date);
+            FeelingComment = v.findViewById(R.id.feeling_comment);
             itemView.setOnClickListener(this);
         }
 

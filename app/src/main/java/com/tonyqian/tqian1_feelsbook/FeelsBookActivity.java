@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.BufferedReader;
@@ -46,6 +47,9 @@ public class FeelsBookActivity extends AppCompatActivity {
 
         // attempt to load saved feelings from previous save file
         loadSavedFeelingsFromFile();
+
+        // display initial number of feelings on view feelings button
+        updateCounts();
     }
 
     // Perform housekeeping by saving what we have
@@ -61,6 +65,13 @@ public class FeelsBookActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Updates the view feelings button to show counter of number of saved feelings
+    public void updateCounts() {
+        Button viewFeelingsButton = findViewById(R.id.viewFeelingsButton);
+        String buttonText = "View Log (" + Common.myFeelings.size() + " feelings)";
+        viewFeelingsButton.setText(buttonText);
+    }
+
     // Callback when unit in EmotionRecyclerView is clicked
     public void addFeeling(String emotion) {
         EditText emotionComment = findViewById(R.id.emotionComment);
@@ -68,6 +79,7 @@ public class FeelsBookActivity extends AppCompatActivity {
         Date currentTime = Calendar.getInstance().getTime();
         Feeling feeling = new Feeling(emotion, comment, currentTime);
         Common.myFeelings.add(feeling);
+        updateCounts();
         Snackbar.make(findViewById(R.id.mainConstraintLayout),
                 "Feeling added! \nEmotion: "+feeling.getEmotion(),
                 Snackbar.LENGTH_SHORT).show();
