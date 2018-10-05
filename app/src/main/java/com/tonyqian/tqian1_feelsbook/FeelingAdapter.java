@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingViewHolder> {
     private ViewFeelingsActivity viewFeelingsActivity;
 
@@ -27,12 +25,12 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
     public void onBindViewHolder(FeelingViewHolder holder, int position) {
         holder.FeelingName.setText(Common.myFeelings.get(position).getEmotion());
 
-//        holder.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                viewFeelingsActivity.addFeeling(feelingList.get(position).getEmotion());
-//            }
-//        });
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                viewFeelingsActivity.editFeeling(Common.myFeelings.get(position));
+            }
+        });
     }
 
     @Override

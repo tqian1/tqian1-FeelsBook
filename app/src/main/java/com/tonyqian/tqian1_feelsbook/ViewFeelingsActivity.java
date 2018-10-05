@@ -1,12 +1,9 @@
 package com.tonyqian.tqian1_feelsbook;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 public class ViewFeelingsActivity extends AppCompatActivity {
     private RecyclerView viewFeelingRecyclerView;
@@ -26,5 +23,10 @@ public class ViewFeelingsActivity extends AppCompatActivity {
         // create custom adapter and use it
         viewFeelingAdapter = new FeelingAdapter(this );
         viewFeelingRecyclerView.setAdapter(viewFeelingAdapter);
+    }
+
+    // Callback when unit in FeelingRecyclerView is clicked
+    public void editFeeling(Feeling feeling) {
+
     }
 }
