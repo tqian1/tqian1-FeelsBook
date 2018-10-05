@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +30,8 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
     }
 
     @Override
-    public void onBindViewHolder(FeelingViewHolder holder, int position) {
+    public void onBindViewHolder(final FeelingViewHolder holder, int position) {
+        // grabs the emotion at ArrayList
         Feeling feeling = Common.myFeelings.get(position);
 
         // use SDF to get iso8601 compliant DateTime format
@@ -40,6 +42,30 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
         holder.FeelingDate.setText(dateText);
         String commentText = "Comment: " + feeling.getComment();
         holder.FeelingComment.setText(commentText);
+
+        // listener for edit feeling button
+        holder.EditFeelingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // when button is clicked - get the position of the button
+                int position = holder.getAdapterPosition();
+                // use position to tell ViewFeelingsActivity which feeling to edit
+                viewFeelingsActivity.editFeeling(position);
+            }
+        });
+
+        // listener for delete feeling button
+        holder.DeleteFeelingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // when button is clicked - get the position of the button
+                int position = holder.getAdapterPosition();
+                // use position to tell ViewFeelingsActivity which feeling to edit
+                viewFeelingsActivity.deleteFeeling(position);
+                // tell observers that item was removed so it can update on screen
+                notifyItemRemoved(position);
+            }
+        });
     }
 
     @Override
@@ -51,12 +77,16 @@ public class FeelingAdapter extends RecyclerView.Adapter<FeelingAdapter.FeelingV
         TextView FeelingEmotion;
         TextView FeelingDate;
         TextView FeelingComment;
+        Button EditFeelingButton;
+        Button DeleteFeelingButton;
 
         public FeelingViewHolder(View v) {
             super(v);
             FeelingEmotion = v.findViewById(R.id.feeling_emotion);
             FeelingDate = v.findViewById(R.id.feeling_date);
             FeelingComment = v.findViewById(R.id.feeling_comment);
+            EditFeelingButton = v.findViewById(R.id.edit_feeling_button);
+            DeleteFeelingButton = v.findViewById(R.id.delete_feeling_button);
         }
     }
 }

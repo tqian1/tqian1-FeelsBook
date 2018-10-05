@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,13 +67,13 @@ public class FeelsBookActivity extends AppCompatActivity {
         saveFeelingsToFile();
     }
 
-    // Callback when View Feelings button is pressed
+    // Callback when View Log button is pressed
     public void viewFeelings(View view) {
         Intent intent = new Intent(this, ViewFeelingsActivity.class);
         startActivity(intent);
     }
 
-    // Callback when unit in EmotionRecyclerView is clicked
+    // Callback when Add button in EmotionRecyclerView is clicked
     public void addFeeling(String emotion) {
         EditText emotionComment = findViewById(R.id.emotionComment);
         String comment = emotionComment.getText().toString();
@@ -84,7 +85,6 @@ public class FeelsBookActivity extends AppCompatActivity {
                 "Feeling added! \nEmotion: "+feeling.getEmotion(),
                 Snackbar.LENGTH_SHORT).show();
     }
-
 
     // Updates the view feelings button to show counter of number of saved feelings
     public void updateViewFeelingsButton() {

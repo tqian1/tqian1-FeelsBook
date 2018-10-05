@@ -58,11 +58,10 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
             public void onClick(View view) {
                 // when button is clicked - get the position of the button
                 int position = holder.getAdapterPosition();
-                // use position to add a feeling and re-calculate + update its total count
-                String emotionName = emotionList[position];
-                feelsBookActivity.addFeeling(emotionName);
-                String emotionCount = "(" + emotionCount(emotionName) + ")";
-                holder.EmotionCount.setText(emotionCount);
+                // use position to get emotion and tell FeelsBookActivity what to add
+                feelsBookActivity.addFeeling(emotionList[position]);
+                // tell observers that item was added so it can update on screen
+                notifyItemChanged(position);
             }
         });
 
