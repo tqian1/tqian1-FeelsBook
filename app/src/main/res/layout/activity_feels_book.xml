@@ -41,7 +41,7 @@
         android:hint="@string/add_comment_hint"
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
-        android:inputType="text"
+        android:inputType="text|textMultiLine"
         android:maxLength="100"
         app:layout_constraintBottom_toTopOf="@+id/emotionDescription"
         app:layout_constraintEnd_toEndOf="parent"

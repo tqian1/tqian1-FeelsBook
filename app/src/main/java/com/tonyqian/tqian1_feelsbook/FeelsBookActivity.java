@@ -103,6 +103,8 @@ public class FeelsBookActivity extends AppCompatActivity {
             selectEmotionAdapter.notifyDataSetChanged();
             // Update our View Log Button in case Feelings were deleted
             updateViewFeelingsButton();
+            // Save everything to file
+            saveFeelingsToFile();
         }
     }
 
