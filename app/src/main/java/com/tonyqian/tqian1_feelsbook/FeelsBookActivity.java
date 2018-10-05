@@ -49,7 +49,7 @@ public class FeelsBookActivity extends AppCompatActivity {
         loadSavedFeelingsFromFile();
 
         // display initial number of feelings on view feelings button
-        updateCounts();
+        updateViewFeelingsButton();
     }
 
     // Perform housekeeping by saving what we have
@@ -65,13 +65,6 @@ public class FeelsBookActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Updates the view feelings button to show counter of number of saved feelings
-    public void updateCounts() {
-        Button viewFeelingsButton = findViewById(R.id.viewFeelingsButton);
-        String buttonText = "View Log (" + Common.myFeelings.size() + " feelings)";
-        viewFeelingsButton.setText(buttonText);
-    }
-
     // Callback when unit in EmotionRecyclerView is clicked
     public void addFeeling(String emotion) {
         EditText emotionComment = findViewById(R.id.emotionComment);
@@ -79,10 +72,18 @@ public class FeelsBookActivity extends AppCompatActivity {
         Date currentTime = Calendar.getInstance().getTime();
         Feeling feeling = new Feeling(emotion, comment, currentTime);
         Common.myFeelings.add(feeling);
-        updateCounts();
+        updateViewFeelingsButton();
         Snackbar.make(findViewById(R.id.mainConstraintLayout),
                 "Feeling added! \nEmotion: "+feeling.getEmotion(),
                 Snackbar.LENGTH_SHORT).show();
+    }
+
+
+    // Updates the view feelings button to show counter of number of saved feelings
+    public void updateViewFeelingsButton() {
+        Button viewFeelingsButton = findViewById(R.id.viewFeelingsButton);
+        String buttonText = "View Log (" + Common.myFeelings.size() + " feelings)";
+        viewFeelingsButton.setText(buttonText);
     }
 
     // Save our feelings

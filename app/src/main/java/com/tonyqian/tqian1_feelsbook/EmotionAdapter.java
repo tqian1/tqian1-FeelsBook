@@ -16,6 +16,17 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
         this.feelsBookActivity = feelsBookActivity;
     }
 
+    // finds how many times this emotion has been added based on feelings log
+    public int emotionCount(String emotionName) {
+        int count = 0;
+        for (int i = 0; i < Common.myFeelings.size(); i++) {
+            if (Common.myFeelings.get(i).getEmotion().equals(emotionName)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     @Override
     public EmotionAdapter.EmotionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -26,13 +37,26 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
 
     @Override
     public void onBindViewHolder(final EmotionViewHolder holder, int position) {
-        holder.EmotionName.setText(emotionList[position]);
+        // grabs the emotion at list position
+        String emotionName = emotionList[position];
+        // grabs the count for this emotion
+        String emotionCount = "(" + emotionCount(emotionName) + ")";
+        // sets the emotion name
+        holder.EmotionName.setText(emotionName);
+        // sets the emotion count
+        holder.EmotionCount.setText(emotionCount);
 
+        // listener for add feeling button
         holder.AddFeelingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // when button is clicked - get the position of the button
                 int position = holder.getAdapterPosition();
-                feelsBookActivity.addFeeling(emotionList[position]);
+                // use position to add a feeling and re-calculate + update its total count
+                String emotionName = emotionList[position];
+                feelsBookActivity.addFeeling(emotionName);
+                String emotionCount = "(" + emotionCount(emotionName) + ")";
+                holder.EmotionCount.setText(emotionCount);
             }
         });
 
@@ -45,11 +69,13 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
 
     public static class EmotionViewHolder extends RecyclerView.ViewHolder {
         TextView EmotionName;
+        TextView EmotionCount;
         Button AddFeelingButton;
 
         public EmotionViewHolder(View v) {
             super(v);
             EmotionName = v.findViewById(R.id.emotion_name);
+            EmotionCount = v.findViewById(R.id.emotion_count);
             AddFeelingButton = v.findViewById(R.id.add_feeling_button);
         }
     }
